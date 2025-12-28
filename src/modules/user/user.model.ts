@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { comparePassword } from "../../common/utils/password";
 
 interface IUser extends Document {
     email: string,
@@ -15,7 +16,8 @@ const userSchema = new Schema<IUser>({
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        select: false,
     },
 }, {
     timestamps: true

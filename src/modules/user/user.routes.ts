@@ -5,7 +5,8 @@ import { registerUserSchema, loginUserSchema } from "./user.schema";
 
 const router = Router();
 
-router.post('/egister', validate(registerUserSchema), userController.register)
+router.post('/register', validate(registerUserSchema), userController.register)
 router.post('/login', validate(loginUserSchema), userController.login)
+router.get('/:id', userController.getUserDetailsById)
 
 export default router

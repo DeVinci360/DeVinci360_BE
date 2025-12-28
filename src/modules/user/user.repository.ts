@@ -4,7 +4,11 @@ export const userRepository = {
     createUser: (data: { email: string; password: string }) => {
         return UserModel.create(data);
     },
-    findByEmail: (email: string) => {
-        return UserModel.findOne({ email });
+    findByEmail: (email: string, options?: { selectPassword?: boolean }) => {
+        return UserModel.findOne({ email })
+            .select(options?.selectPassword ? "+password" : "-password");
     },
+    findById: (id: string) => {
+        return UserModel.findById(id);
+    }
 };
