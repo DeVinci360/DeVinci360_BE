@@ -8,7 +8,7 @@ const router = Router();
 
 /**
  * @swagger
- * /organization/regional-settings/{regionId}:
+ * /organization/regional-settings/{regionCode}:
  *   get:
  *     summary: Get regional settings
  *     tags: [Organization Regional Settings]
@@ -16,7 +16,7 @@ const router = Router();
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: regionId
+ *         name: regionCode
  *         required: true
  *         schema:
  *           type: string
@@ -26,11 +26,11 @@ const router = Router();
  *       404:
  *         description: Settings not found
  */
-router.get("/:regionId", regionalSettingsController.getSettings as unknown as RequestHandler);
+router.get("/:regionCode", regionalSettingsController.getSettings as unknown as RequestHandler);
 
 /**
  * @swagger
- * /organization/regional-settings/{regionId}:
+ * /organization/regional-settings/{regionCode}:
  *   put:
  *     summary: Update regional settings
  *     tags: [Organization Regional Settings]
@@ -38,7 +38,7 @@ router.get("/:regionId", regionalSettingsController.getSettings as unknown as Re
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: regionId
+ *         name: regionCode
  *         required: true
  *         schema:
  *           type: string
@@ -67,6 +67,6 @@ router.get("/:regionId", regionalSettingsController.getSettings as unknown as Re
  *       200:
  *         description: Settings updated successfully
  */
-router.put("/:regionId", validate(regionalSettingsSchema), regionalSettingsController.updateSettings as unknown as RequestHandler);
+router.put("/:regionCode", validate(regionalSettingsSchema), regionalSettingsController.updateSettings as unknown as RequestHandler);
 
 export default router;

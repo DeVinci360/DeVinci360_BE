@@ -2,8 +2,8 @@ import { RegionalSettingsModel } from "./regional_settings.model";
 import { OrganizationRegionModel } from "../organization_region/org_region.model";
 
 class RegionalSettingsRepository {
-    async checkRegionExists(regionId: string) {
-        return await OrganizationRegionModel.exists({ _id: regionId });
+    async checkRegionExistsByCode(regionCode: string) {
+        return await OrganizationRegionModel.exists({ regionCode });
     }
 
     async upsertSettings(regionId: string, data: any) {

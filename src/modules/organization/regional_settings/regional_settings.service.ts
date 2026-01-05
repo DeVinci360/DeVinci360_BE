@@ -2,20 +2,21 @@ import { regionalSettingsRepository } from "./regional_settings.repository";
 import { AppError } from "../../../common/errors/app.error";
 
 class RegionalSettingsService {
-    private async checkRegionExists(regionId: string) {
-        const exists = await regionalSettingsRepository.checkRegionExists(regionId);
-        if (!exists) {
+    private async resolveRegionCode(regionCode: string) {
+        const regionId = await regionalSettingsRepository.checkRegionExistsByCode(regionCode);
+        if (!regionId) {
             throw new AppError("Region not found", 404);
         }
+        return regionId?._id?.toString();
     }
 
-    async updateSettings(regionId: string, data: any) {
-        await this.checkRegionExists(regionId);
+    async updateSettings(regionCode: string, data: any) {
+        const regionId = await this.resolveRegionCode(regionCode);
         return await regionalSettingsRepository.upsertSettings(regionId, data);
     }
 
-    async getSettings(regionId: string) {
-        await this.checkRegionExists(regionId);
+    async getSettings(regionCode: string) {
+        const regionId = await this.resolveRegionCode(regionCode);
         return await regionalSettingsRepository.getSettings(regionId);
     }
 }

@@ -1,15 +1,13 @@
 import { Response } from "express";
 import { AuthenticatedRequest } from "../../../common/types";
 import { regionalSettingsService } from "./regional_settings.service";
-import { checkRegionId } from "./regional_settings.utils";
 
 class RegionalSettingsController {
     async updateSettings(req: AuthenticatedRequest, res: Response) {
         try {
-            const { regionId } = req.params;
-            checkRegionId(regionId);
+            const { regionCode } = req.params;
             const settings = await regionalSettingsService.updateSettings(
-                regionId,
+                regionCode,
                 req.body
             );
             return res.status(200).json({
@@ -26,9 +24,8 @@ class RegionalSettingsController {
 
     async getSettings(req: AuthenticatedRequest, res: Response) {
         try {
-            const { regionId } = req.params;
-            checkRegionId(regionId);
-            const settings = await regionalSettingsService.getSettings(regionId);
+            const { regionCode } = req.params;
+            const settings = await regionalSettingsService.getSettings(regionCode);
             return res.status(200).json({
                 message: "Success",
                 data: settings || {},
