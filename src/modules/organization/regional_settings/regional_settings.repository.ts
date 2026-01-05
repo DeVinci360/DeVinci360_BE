@@ -3,7 +3,7 @@ import { OrganizationRegionModel } from "../organization_region/org_region.model
 
 class RegionalSettingsRepository {
     async checkRegionExistsByCode(regionCode: string) {
-        return await OrganizationRegionModel.exists({ regionCode });
+        return await OrganizationRegionModel.exists({ regionCode: { $regex: new RegExp(`^${regionCode}$`, "i") } });
     }
 
     async upsertSettings(regionId: string, data: any) {

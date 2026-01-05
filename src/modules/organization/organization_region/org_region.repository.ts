@@ -6,16 +6,11 @@ class OrganizationRegionRepository {
     }
     async getExistingRegionByNameOrCode(regionName: string, regionCode: string,) {
         return await OrganizationRegionModel.exists({
-            $or: [{ regionName: regionName.trim() }, { regionCode: regionCode.trim() }]
+            $or: [{ regionName: { $regex: new RegExp(`^${regionName.trim()}$`, "i") } }, { regionCode: { $regex: new RegExp(`^${regionCode.trim()}$`, "i") } }]
         });
     }
     async totalRegions() {
         return await OrganizationRegionModel.estimatedDocumentCount();
-    }
-    async getRegionByNameOrCode(regionName: string, regionCode: string,) {
-        return await OrganizationRegionModel.findOne({
-            $or: [{ regionName }, { regionCode }]
-        }).lean();
     }
     async regionList(filter?: any) {
         return await OrganizationRegionModel.find(filter).lean();
