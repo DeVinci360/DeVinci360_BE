@@ -1,5 +1,4 @@
 import { model, Schema } from "mongoose";
-import uniqueValidater from "../../../common/utils/uv";
 
 const orgnizationRegionSchema = new Schema({
     regionName: {
@@ -25,7 +24,5 @@ const orgnizationRegionSchema = new Schema({
         default: true
     }
 });
-
-orgnizationRegionSchema.plugin(uniqueValidater, { message: '{PATH} already exists' });
 
 export const OrganizationRegionModel = model("organization_region", orgnizationRegionSchema);

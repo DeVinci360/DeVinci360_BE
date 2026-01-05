@@ -25,10 +25,10 @@ class OrganizationRegionRepository {
     }
     async marAsDefault(id: string) {
         await OrganizationRegionModel.findOneAndUpdate({ isDefault: true }, { isDefault: false })
-        return await OrganizationRegionModel.findByIdAndUpdate(id, { isDefault: true });
+        return await OrganizationRegionModel.findByIdAndUpdate(id, { isDefault: true }, { new: true });
     }
     async updateRegion(id: string, regionData: any) {
-        return await OrganizationRegionModel.findByIdAndUpdate(id, regionData);
+        return await OrganizationRegionModel.findByIdAndUpdate(id, regionData, { new: true });
     }
 }
 

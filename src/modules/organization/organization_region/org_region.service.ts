@@ -15,7 +15,11 @@ class OrganizationRegionService {
         return await organizationRegionRepository.createRegion(regionData);
     }
     async regionList() {
-        return await organizationRegionRepository.regionList();
+        const [regions, totalRegions] = await Promise.all([
+            organizationRegionRepository.regionList(),
+            organizationRegionRepository.totalRegions()
+        ]);
+        return { regions, totalRegions };
     }
     async deleteRegion(id: string) {
         return await organizationRegionRepository.deleteRegion(id);

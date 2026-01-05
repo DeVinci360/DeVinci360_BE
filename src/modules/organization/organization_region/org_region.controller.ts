@@ -7,26 +7,26 @@ class OrganizationRegionController {
         try {
             const region = await organizationRegionService.createRegion(req.body);
             return res.status(201).json({
-                message: "Region created successfully",
+                message: "Success",
                 data: region,
             });
         } catch (error: any) {
             return res.status(500).json({
-                message: "Region creation failed",
+                message: "Failed",
                 error: error?.message,
             });
         }
     }
     async regionList(req: Request, res: Response) {
         try {
-            const region = await organizationRegionService.regionList();
+            const { regions, totalRegions } = await organizationRegionService.regionList();
             return res.status(200).json({
-                message: "Region list fetched successfully",
-                data: region,
+                message: "Success",
+                data: { regions, totalRegions },
             });
         } catch (error: any) {
             return res.status(500).json({
-                message: "Region list fetching failed",
+                message: "Failed",
                 error: error?.message,
             });
         }
@@ -37,12 +37,12 @@ class OrganizationRegionController {
             checkRegionId(id);
             const region = await organizationRegionService.deleteRegion(id);
             return res.status(200).json({
-                message: "Region deleted successfully",
+                message: "Success",
                 data: region,
             });
         } catch (error: any) {
             return res.status(500).json({
-                message: "Region deletion failed",
+                message: "Failed",
                 error: error?.message,
             });
         }
@@ -53,12 +53,12 @@ class OrganizationRegionController {
             checkRegionId(id);
             const region = await organizationRegionService.marAsDefault(id);
             return res.status(200).json({
-                message: "Region marked as default successfully",
+                message: "Success",
                 data: region,
             });
         } catch (error: any) {
             return res.status(500).json({
-                message: "Region marking as default failed",
+                message: "Failed",
                 error: error?.message,
             });
         }
@@ -69,12 +69,12 @@ class OrganizationRegionController {
             checkRegionId(id);
             const region = await organizationRegionService.updateRegion(id, req.body);
             return res.status(200).json({
-                message: "Region updated successfully",
+                message: "Success",
                 data: region,
             });
         } catch (error: any) {
             return res.status(500).json({
-                message: "Region update failed",
+                message: "Failed",
                 error: error?.message,
             });
         }
