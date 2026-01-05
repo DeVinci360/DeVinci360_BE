@@ -51,7 +51,7 @@ router.post("/create", validate(organizationProfileSchema), organizationProfileC
  * @swagger
  * /organization/profile:
  *   get:
- *     summary: Get organization profile by ID
+ *     summary: Get organization profile
  *     tags: [Organization Profile]
  *     security:
  *       - bearerAuth: []

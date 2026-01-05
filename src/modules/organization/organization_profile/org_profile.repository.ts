@@ -6,7 +6,7 @@ class OrganizationProfileRepository {
     }
 
     async update(data: any) {
-        return await OrganizationProfileModel.findOneAndUpdate({}, data, { new: true });
+        return await OrganizationProfileModel.findOneAndUpdate({}, { $set: data }, { new: true });
     }
     async totalProfiles() {
         return await OrganizationProfileModel.estimatedDocumentCount();

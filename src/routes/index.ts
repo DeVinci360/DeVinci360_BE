@@ -4,6 +4,7 @@ import userRoutes from "../modules/user/user.routes";
 import { authenticate } from "../common/middlewares/auth.middleware";
 import orgnizationRegionRoutes from "../modules/organization/organization_region/org_region.routes";
 import organizationProfileRoutes from "../modules/organization/organization_profile/org_profile.routes"; // Import new routes
+import regionalSettingsRoutes from "../modules/organization/regional_settings/regional_settings.routes";
 
 const router = Router();
 
@@ -15,5 +16,6 @@ router.use("/auth", authRoutes);
 router.use("/user", authenticate, userRoutes);
 router.use("/organization/region", orgnizationRegionRoutes);
 router.use("/organization/profile", organizationProfileRoutes);
+router.use("/organization/regional-settings", regionalSettingsRoutes);
 
 export default router;
