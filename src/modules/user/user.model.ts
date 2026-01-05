@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import { comparePassword } from "../../common/utils/password";
 
 interface IUser extends Document {
     email: string,
