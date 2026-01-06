@@ -1,4 +1,4 @@
-import { organizationRegionRepository } from "./org_region.repository";
+import { organizationRegionRepository } from "../repositories/org_region.repository";
 
 class OrganizationRegionService {
     async createRegion(regionData: any) {
@@ -14,6 +14,7 @@ class OrganizationRegionService {
         }
         return await organizationRegionRepository.createRegion(regionData);
     }
+
     async regionList() {
         const [regions, totalRegions] = await Promise.all([
             organizationRegionRepository.regionList(),
@@ -21,12 +22,15 @@ class OrganizationRegionService {
         ]);
         return { regions, totalRegions };
     }
+
     async deleteRegion(id: string) {
         return await organizationRegionRepository.deleteRegion(id);
     }
+
     async marAsDefault(id: string) {
         return await organizationRegionRepository.marAsDefault(id);
     }
+
     async updateRegion(id: string, regionData: any) {
         const existingRegion = await organizationRegionRepository.getExistingRegionByNameOrCode(regionData.regionName, regionData.regionCode);
         if (existingRegion && existingRegion._id.toString() !== id) {

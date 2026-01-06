@@ -1,42 +1,42 @@
 import { Response } from "express";
 import { AuthenticatedRequest } from "../../../common/types";
-import { leavePolicyService } from "./leave_policy.service";
+import { workScheduleService } from "../services/work_schedule.service";
 
-class LeavePolicyController {
-    async updatePolicy(req: AuthenticatedRequest, res: Response) {
+class WorkScheduleController {
+    async updateSchedule(req: AuthenticatedRequest, res: Response) {
         try {
             const { regionCode } = req.params;
-            const policy = await leavePolicyService.updatePolicy(
+            const schedule = await workScheduleService.updateSchedule(
                 regionCode,
                 req.body
             );
             return res.status(200).json({
-                message: "Leave policy updated successfully",
-                data: policy,
+                message: "Work schedule updated successfully",
+                data: schedule,
             });
         } catch (error: any) {
             return res.status(error?.statusCode || 500).json({
-                message: error?.message || "Failed to update leave policy",
+                message: error?.message || "Failed to update work schedule",
                 error: true,
             });
         }
     }
 
-    async getPolicy(req: AuthenticatedRequest, res: Response) {
+    async getSchedule(req: AuthenticatedRequest, res: Response) {
         try {
             const { regionCode } = req.params;
-            const policy = await leavePolicyService.getPolicy(regionCode);
+            const schedule = await workScheduleService.getSchedule(regionCode);
             return res.status(200).json({
                 message: "Success",
-                data: policy || {},
+                data: schedule || {},
             });
         } catch (error: any) {
             return res.status(error?.statusCode || 500).json({
-                message: error?.message || "Failed to fetch leave policy",
+                message: error?.message || "Failed to fetch work schedule",
                 error: true,
             });
         }
     }
 }
 
-export const leavePolicyController = new LeavePolicyController();
+export const workScheduleController = new WorkScheduleController();

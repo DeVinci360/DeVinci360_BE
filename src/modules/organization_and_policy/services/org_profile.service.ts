@@ -1,5 +1,5 @@
 import { AppError } from "../../../common/errors/app.error";
-import { organizationProfileRepository } from "./org_profile.repository";
+import { organizationProfileRepository } from "../repositories/org_profile.repository";
 
 class OrganizationProfileService {
     async create(data: any) {

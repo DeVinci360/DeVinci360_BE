@@ -1,12 +1,12 @@
-import { workScheduleRepository } from "./work_schedule.repository";
+import { workScheduleRepository } from "../repositories/work_schedule.repository";
+import { organizationRegionRepository } from "../repositories/org_region.repository";
 import { AppError } from "../../../common/errors/app.error";
 
 import { DayOfWeekEnum } from "../../../common/enums";
-import { checkRegionExistsByCode } from "..";
 
 class WorkScheduleService {
     private async resolveRegionCode(regionCode: string) {
-        const region = await checkRegionExistsByCode(regionCode);
+        const region = await organizationRegionRepository.checkRegionExistsByCode(regionCode);
         if (!region) {
             throw new AppError("Region not found", 404);
         }

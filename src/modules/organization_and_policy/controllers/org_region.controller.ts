@@ -1,6 +1,6 @@
-import { organizationRegionService } from "./org_region.service";
+import { organizationRegionService } from "../services/org_region.service";
 import { Request, Response } from "express";
-import { checkRegionId } from "./org_region.utils";
+import { checkRegionId } from "../utils/org_region.utils";
 
 class OrganizationRegionController {
     async createRegion(req: Request, res: Response) {

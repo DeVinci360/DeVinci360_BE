@@ -1,7 +1,7 @@
 import { Router, RequestHandler } from "express";
-import { organizationProfileController } from "./org_profile.controller";
+import { organizationProfileController } from "../controllers/org_profile.controller";
 import { validate } from "../../../common/middlewares/validate.middleware";
-import { organizationProfileSchema } from "./org_profile.schema";
+import { organizationProfileSchema } from "../validation_schemas/org_profile.schema";
 
 const router = Router();
 

@@ -1,8 +1,8 @@
 import { Router, RequestHandler } from "express";
-import { workScheduleController } from "./work_schedule.controller";
+import { workScheduleController } from "../controllers/work_schedule.controller";
 import { validate } from "../../../common/middlewares/validate.middleware";
 import { authenticate } from "../../../common/middlewares/auth.middleware";
-import { workScheduleSchema } from "./work_schedule.schema";
+import { workScheduleSchema } from "../validation_schemas/work_schedule.schema";
 
 const router = Router();
 

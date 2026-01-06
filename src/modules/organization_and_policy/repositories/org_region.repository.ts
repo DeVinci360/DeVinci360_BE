@@ -1,4 +1,4 @@
-import { OrganizationRegionModel } from "./org_region.model";
+import { OrganizationRegionModel } from "../models/org_region.model";
 
 class OrganizationRegionRepository {
     async createRegion(regionData: any) {

@@ -2,11 +2,11 @@ import { Router } from "express";
 import authRoutes from "../modules/auth/auth.routes";
 import userRoutes from "../modules/user/user.routes";
 import { authenticate } from "../common/middlewares/auth.middleware";
-import orgnizationRegionRoutes from "../modules/organization/organization_region/org_region.routes";
-import organizationProfileRoutes from "../modules/organization/organization_profile/org_profile.routes"; // Import new routes
-import regionalSettingsRoutes from "../modules/organization/regional_settings/regional_settings.routes";
-import workScheduleRoutes from "../modules/organization/work_schedule/work_schedule.routes";
-import leavePolicyRoutes from "../modules/organization/leave_policy/leave_policy.routes";
+import orgnizationRegionRoutes from "../modules/organization_and_policy/routes/org_region.routes";
+import organizationProfileRoutes from "../modules/organization_and_policy/routes/org_profile.routes"; // Import new routes
+import regionalSettingsRoutes from "../modules/organization_and_policy/routes/regional_settings.routes";
+import workScheduleRoutes from "../modules/organization_and_policy/routes/work_schedule.routes";
+import leavePolicyRoutes from "../modules/organization_and_policy/routes/leave_policy.routes";
 
 const router = Router();
 

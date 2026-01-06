@@ -1,5 +1,4 @@
-import { WorkScheduleModel } from "./work_schedule.model";
-import { OrganizationRegionModel } from "../organization_region/org_region.model";
+import { WorkScheduleModel } from "../models/work_schedule.model";
 
 class WorkScheduleRepository {
     async upsertSchedule(regionId: string, schedule: any) {

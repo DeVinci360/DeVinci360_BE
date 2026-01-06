@@ -1,4 +1,4 @@
-import { OrganizationProfileModel } from "./org_profile.model";
+import { OrganizationProfileModel } from "../models/org_profile.model";
 
 class OrganizationProfileRepository {
     async create(data: any) {

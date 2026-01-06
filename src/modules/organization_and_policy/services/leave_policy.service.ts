@@ -1,10 +1,10 @@
-import { leavePolicyRepository } from "./leave_policy.repository";
+import { leavePolicyRepository } from "../repositories/leave_policy.repository";
 import { AppError } from "../../../common/errors/app.error";
-import { checkRegionExistsByCode } from "..";
+import { organizationRegionRepository } from "../repositories/org_region.repository";
 
 class LeavePolicyService {
     private async resolveRegionCode(regionCode: string) {
-        const region = await checkRegionExistsByCode(regionCode);
+        const region = await organizationRegionRepository.checkRegionExistsByCode(regionCode);
         if (!region) {
             throw new AppError("Region not found", 404);
         }

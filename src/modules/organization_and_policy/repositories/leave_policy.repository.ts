@@ -1,4 +1,4 @@
-import { LeavePolicyModel } from "./leave_policy.model";
+import { LeavePolicyModel } from "../models/leave_policy.model";
 
 class LeavePolicyRepository {
     async upsertPolicy(regionId: string, leaveTypes: any[]) {

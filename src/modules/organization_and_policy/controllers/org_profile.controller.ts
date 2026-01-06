@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { organizationProfileService } from "./org_profile.service";
+import { organizationProfileService } from "../services/org_profile.service";
 import { AuthenticatedRequest } from "../../../common/types";
 
 class OrganizationProfileController {

@@ -1,8 +1,8 @@
 import { Router, RequestHandler } from "express";
-import { leavePolicyController } from "./leave_policy.controller";
+import { leavePolicyController } from "../controllers/leave_policy.controller";
 import { validate } from "../../../common/middlewares/validate.middleware";
 import { authenticate } from "../../../common/middlewares/auth.middleware";
-import { leavePolicySchema } from "./leave_policy.schema";
+import { leavePolicySchema } from "../validation_schemas/leave_policy.schema";
 
 const router = Router();
 

@@ -1,8 +1,8 @@
 import { Router, RequestHandler } from "express";
-import { regionalSettingsController } from "./regional_settings.controller";
+import { regionalSettingsController } from "../controllers/regional_settings.controller";
 import { validate } from "../../../common/middlewares/validate.middleware";
 import { authenticate } from "../../../common/middlewares/auth.middleware";
-import { regionalSettingsSchema } from "./regional_settings.schema";
+import { regionalSettingsSchema } from "../validation_schemas/regional_settings.schema";
 
 const router = Router();
 

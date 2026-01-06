@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { AuthenticatedRequest } from "../../../common/types";
-import { regionalSettingsService } from "./regional_settings.service";
+import { regionalSettingsService } from "../services/regional_settings.service";
 
 class RegionalSettingsController {
     async updateSettings(req: AuthenticatedRequest, res: Response) {

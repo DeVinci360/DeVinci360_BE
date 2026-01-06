@@ -1,4 +1,4 @@
-import { RegionalSettingsModel } from "./regional_settings.model";
+import { RegionalSettingsModel } from "../models/regional_settings.model";
 
 class RegionalSettingsRepository {
 

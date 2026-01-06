@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { organizationRegionController } from "./org_region.controller";
+import { organizationRegionController } from "../controllers/org_region.controller";
 import { validate } from "../../../common/middlewares/validate.middleware";
-import { orgRegionSchema } from "./org_region.schema";
+import { orgRegionSchema } from "../validation_schemas/org_region.schema";
 
 const router = Router();
 
