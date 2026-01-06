@@ -3,7 +3,7 @@ import { organizationRegionController } from "../controllers/org_region.controll
 import { validate } from "../../../common/middlewares/validate.middleware";
 import { orgRegionSchema } from "../validation_schemas/org_region.schema";
 
-const router = Router();
+const organizationRegionRouter = Router();
 
 /**
  * @swagger
@@ -34,7 +34,7 @@ const router = Router();
  *       500:
  *         description: Server error
  */
-router.post("/create", validate(orgRegionSchema), organizationRegionController.createRegion);
+organizationRegionRouter.post("/create", validate(orgRegionSchema), organizationRegionController.createRegion);
 
 /**
  * @swagger
@@ -46,7 +46,7 @@ router.post("/create", validate(orgRegionSchema), organizationRegionController.c
  *       200:
  *         description: List of regions
  */
-router.get("/list", organizationRegionController.regionList);
+organizationRegionRouter.get("/list", organizationRegionController.regionList);
 
 /**
  * @swagger
@@ -64,7 +64,7 @@ router.get("/list", organizationRegionController.regionList);
  *       200:
  *         description: Region deleted successfully
  */
-router.delete("/:id", organizationRegionController.deleteRegion);
+organizationRegionRouter.delete("/:id", organizationRegionController.deleteRegion);
 
 /**
  * @swagger
@@ -97,7 +97,7 @@ router.delete("/:id", organizationRegionController.deleteRegion);
  *       200:
  *         description: Region updated successfully
  */
-router.put("/:id", validate(orgRegionSchema), organizationRegionController.updateRegion);
+organizationRegionRouter.put("/:id", validate(orgRegionSchema), organizationRegionController.updateRegion);
 
 /**
  * @swagger
@@ -115,6 +115,6 @@ router.put("/:id", validate(orgRegionSchema), organizationRegionController.updat
  *       200:
  *         description: Region marked as default
  */
-router.patch("/:id/mark-as-default", organizationRegionController.marAsDefault);
+organizationRegionRouter.patch("/:id/mark-as-default", organizationRegionController.marAsDefault);
 
-export default router;
+export default organizationRegionRouter;

@@ -4,7 +4,7 @@ import { validate } from "../../../common/middlewares/validate.middleware";
 import { authenticate } from "../../../common/middlewares/auth.middleware";
 import { leavePolicySchema } from "../validation_schemas/leave_policy.schema";
 
-const router = Router();
+const leavePolicyRouter = Router();
 
 /**
  * @swagger
@@ -26,7 +26,7 @@ const router = Router();
  *       404:
  *         description: Policy not found
  */
-router.get("/:regionCode", leavePolicyController.getPolicy as unknown as RequestHandler);
+leavePolicyRouter.get("/:regionCode", leavePolicyController.getPolicy as unknown as RequestHandler);
 
 /**
  * @swagger
@@ -70,6 +70,6 @@ router.get("/:regionCode", leavePolicyController.getPolicy as unknown as Request
  *       200:
  *         description: Policy updated successfully
  */
-router.put("/:regionCode", validate(leavePolicySchema), leavePolicyController.updatePolicy as unknown as RequestHandler);
+leavePolicyRouter.put("/:regionCode", validate(leavePolicySchema), leavePolicyController.updatePolicy as unknown as RequestHandler);
 
-export default router;
+export default leavePolicyRouter;

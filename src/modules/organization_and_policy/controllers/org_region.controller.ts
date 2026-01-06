@@ -1,6 +1,5 @@
 import { organizationRegionService } from "../services/org_region.service";
 import { Request, Response } from "express";
-import { checkRegionId } from "../utils/org_region.utils";
 
 class OrganizationRegionController {
     async createRegion(req: Request, res: Response) {
@@ -34,7 +33,6 @@ class OrganizationRegionController {
     async deleteRegion(req: Request, res: Response) {
         const { id } = req.params;
         try {
-            checkRegionId(id);
             const region = await organizationRegionService.deleteRegion(id);
             return res.status(200).json({
                 message: "Success",
@@ -50,7 +48,6 @@ class OrganizationRegionController {
     async marAsDefault(req: Request, res: Response) {
         const { id } = req.params;
         try {
-            checkRegionId(id);
             const region = await organizationRegionService.marAsDefault(id);
             return res.status(200).json({
                 message: "Success",
@@ -66,7 +63,6 @@ class OrganizationRegionController {
     async updateRegion(req: Request, res: Response) {
         const { id } = req.params;
         try {
-            checkRegionId(id);
             const region = await organizationRegionService.updateRegion(id, req.body);
             return res.status(200).json({
                 message: "Success",

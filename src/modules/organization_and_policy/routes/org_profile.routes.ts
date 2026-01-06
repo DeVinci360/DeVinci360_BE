@@ -3,7 +3,7 @@ import { organizationProfileController } from "../controllers/org_profile.contro
 import { validate } from "../../../common/middlewares/validate.middleware";
 import { organizationProfileSchema } from "../validation_schemas/org_profile.schema";
 
-const router = Router();
+const organizationProfileRouter = Router();
 
 /**
  * @swagger
@@ -45,7 +45,7 @@ const router = Router();
  *       401:
  *         description: Unauthorized
  */
-router.post("/create", validate(organizationProfileSchema), organizationProfileController.createOrganization);
+organizationProfileRouter.post("/create", validate(organizationProfileSchema), organizationProfileController.createOrganization);
 
 /**
  * @swagger
@@ -61,7 +61,7 @@ router.post("/create", validate(organizationProfileSchema), organizationProfileC
  *       404:
  *         description: Profile not found
  */
-router.get("/", organizationProfileController.getProfile as unknown as RequestHandler);
+organizationProfileRouter.get("/", organizationProfileController.getProfile as unknown as RequestHandler);
 
 /**
  * @swagger
@@ -98,6 +98,6 @@ router.get("/", organizationProfileController.getProfile as unknown as RequestHa
  *       404:
  *         description: Profile not found
  */
-router.put("/", validate(organizationProfileSchema), organizationProfileController.updateProfile as unknown as RequestHandler);
+organizationProfileRouter.put("/", validate(organizationProfileSchema), organizationProfileController.updateProfile as unknown as RequestHandler);
 
-export default router;
+export default organizationProfileRouter;

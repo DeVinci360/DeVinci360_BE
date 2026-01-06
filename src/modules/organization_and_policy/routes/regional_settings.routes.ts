@@ -4,7 +4,7 @@ import { validate } from "../../../common/middlewares/validate.middleware";
 import { authenticate } from "../../../common/middlewares/auth.middleware";
 import { regionalSettingsSchema } from "../validation_schemas/regional_settings.schema";
 
-const router = Router();
+const regionalSettingsRouter = Router();
 
 /**
  * @swagger
@@ -26,7 +26,7 @@ const router = Router();
  *       404:
  *         description: Settings not found
  */
-router.get("/:regionCode", regionalSettingsController.getSettings as unknown as RequestHandler);
+regionalSettingsRouter.get("/:regionCode", regionalSettingsController.getSettings as unknown as RequestHandler);
 
 /**
  * @swagger
@@ -67,6 +67,6 @@ router.get("/:regionCode", regionalSettingsController.getSettings as unknown as 
  *       200:
  *         description: Settings updated successfully
  */
-router.put("/:regionCode", validate(regionalSettingsSchema), regionalSettingsController.updateSettings as unknown as RequestHandler);
+regionalSettingsRouter.put("/:regionCode", validate(regionalSettingsSchema), regionalSettingsController.updateSettings as unknown as RequestHandler);
 
-export default router;
+export default regionalSettingsRouter;

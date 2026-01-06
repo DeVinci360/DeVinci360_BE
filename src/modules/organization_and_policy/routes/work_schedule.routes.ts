@@ -4,7 +4,7 @@ import { validate } from "../../../common/middlewares/validate.middleware";
 import { authenticate } from "../../../common/middlewares/auth.middleware";
 import { workScheduleSchema } from "../validation_schemas/work_schedule.schema";
 
-const router = Router();
+const workScheduleRouter = Router();
 
 /**
  * @swagger
@@ -26,7 +26,7 @@ const router = Router();
  *       404:
  *         description: Schedule not found
  */
-router.get("/:regionCode", workScheduleController.getSchedule as unknown as RequestHandler);
+workScheduleRouter.get("/:regionCode", workScheduleController.getSchedule as unknown as RequestHandler);
 
 /**
  * @swagger
@@ -57,6 +57,6 @@ router.get("/:regionCode", workScheduleController.getSchedule as unknown as Requ
  *       200:
  *         description: Schedule updated successfully
  */
-router.put("/:regionCode", validate(workScheduleSchema), workScheduleController.updateSchedule as unknown as RequestHandler);
+workScheduleRouter.put("/:regionCode", validate(workScheduleSchema), workScheduleController.updateSchedule as unknown as RequestHandler);
 
-export default router;
+export default workScheduleRouter;
