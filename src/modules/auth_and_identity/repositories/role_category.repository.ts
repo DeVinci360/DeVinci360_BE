@@ -20,6 +20,10 @@ class RoleCategoryRepository {
     async isRoleCategoryNameExists(name: string) {
         return await RoleCategoryModel.exists({ name: { $regex: new RegExp(`^${name}$`, "i") } });
     }
+
+    async isRoleCategoryExists(id: string) {
+        return await RoleCategoryModel.exists({ _id: id });
+    }
 }
 
 export const roleCategoryRepository = new RoleCategoryRepository();

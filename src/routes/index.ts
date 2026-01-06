@@ -9,7 +9,7 @@ import {
     workScheduleRouter,
     leavePolicyRouter,
 } from "../modules/organization_and_policy/routes";
-import { roleCategoryRouter } from "../modules/auth_and_identity/routes";
+import { roleCategoryRouter, roleRouter } from "../modules/auth_and_identity/routes";
 const router = Router();
 
 router.get("/health", (_, res) => {
@@ -24,5 +24,6 @@ router.use("/organization/regional-settings", regionalSettingsRouter);
 router.use("/organization/work-schedule", workScheduleRouter);
 router.use("/organization/leave-policy", leavePolicyRouter);
 router.use("/role-category", roleCategoryRouter);
+router.use("/role", roleRouter);
 
 export default router;
