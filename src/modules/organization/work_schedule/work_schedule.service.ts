@@ -2,14 +2,15 @@ import { workScheduleRepository } from "./work_schedule.repository";
 import { AppError } from "../../../common/errors/app.error";
 
 import { DayOfWeekEnum } from "../../../common/enums";
+import { checkRegionExistsByCode } from "..";
 
 class WorkScheduleService {
     private async resolveRegionCode(regionCode: string) {
-        const regionId = await workScheduleRepository.checkRegionExistsByCode(regionCode);
-        if (!regionId) {
+        const region = await checkRegionExistsByCode(regionCode);
+        if (!region) {
             throw new AppError("Region not found", 404);
         }
-        return regionId?._id?.toString();
+        return region?._id?.toString();
     }
 
     private mergeScheduleWithDefaults(incomingSchedule: any[]) {

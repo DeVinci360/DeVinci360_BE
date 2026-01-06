@@ -4,9 +4,12 @@ class OrganizationRegionRepository {
     async createRegion(regionData: any) {
         return await OrganizationRegionModel.create(regionData);
     }
-    async getExistingRegionByNameOrCode(regionName: string, regionCode: string,) {
+    async checkRegionExistsByCode(regionCode: string) {
+        return await OrganizationRegionModel.exists({ regionCode });
+    }
+    async getExistingRegionByNameOrCode(regionName?: string, regionCode?: string,) {
         return await OrganizationRegionModel.exists({
-            $or: [{ regionName: { $regex: new RegExp(`^${regionName.trim()}$`, "i") } }, { regionCode: { $regex: new RegExp(`^${regionCode.trim()}$`, "i") } }]
+            $or: [{ regionName: { $regex: new RegExp(`^${regionName?.trim()}$`, "i") } }, { regionCode: { $regex: new RegExp(`^${regionCode?.trim()}$`, "i") } }]
         });
     }
     async totalRegions() {

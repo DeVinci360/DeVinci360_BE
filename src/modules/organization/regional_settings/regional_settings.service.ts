@@ -1,9 +1,10 @@
 import { regionalSettingsRepository } from "./regional_settings.repository";
 import { AppError } from "../../../common/errors/app.error";
+import { checkRegionExistsByCode } from "..";
 
 class RegionalSettingsService {
     private async resolveRegionCode(regionCode: string) {
-        const regionId = await regionalSettingsRepository.checkRegionExistsByCode(regionCode);
+        const regionId = await checkRegionExistsByCode(regionCode);
         if (!regionId) {
             throw new AppError("Region not found", 404);
         }
@@ -22,3 +23,4 @@ class RegionalSettingsService {
 }
 
 export const regionalSettingsService = new RegionalSettingsService();
+
