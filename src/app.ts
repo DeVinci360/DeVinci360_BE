@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.use("/api", routes);
+app.use("/api/v1", routes);
 
 app.use(notFound);
 app.use(globalErrorHandler);
